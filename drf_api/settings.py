@@ -65,7 +65,7 @@ DEBUG = 'DEV' in os.environ
 ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
-    'https://ci-drfapi-tutorial-3-a9f788ee8efe.herokuapp.com/'
+    'https://ci-drfapi-tutorial-3-a9f788ee8efe.herokuapp.com'
 ]
 
 
