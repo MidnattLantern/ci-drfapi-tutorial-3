@@ -59,7 +59,46 @@ Serializers in drf_api?
 ---
 The serializers.py file was created inside drf_api to assign profile id and profile image to each authenticated user
 
-Other
+Rest serializer
 ---
 Inside settings.py add:
 `REST_AUTH_SERIALIZERS = {'USER_DETAILS_SERIALIZER': 'drf_api.serializers.CurrentUserSerializer'}`
+
+JSON for enduser
+---
+the end user will only need json data, as it would cost unneccessary traffic to load html
+- In settings.py
+![screenshot of "if 'DEV' not in os.environ:"]()
+
+Database
+---
+This repository use ElephantSQL to store data. Note that the service is shutting down, so only use this service for practice.
+- Run in terminal:
+`pip3 install dj_database_url==0.5.0 psycopg2`
+- import the following in settings.py underneath `import.os`:
+`import dj_database_url`
+- Update the DATABASES:
+![screenshot of new DATABASES]()
+This will connect the end user to the data service, and the developer to the db.sqlite3 file
+- in env.py add:
+`os.environ['DATABASE_URL'] = "<PostgreSQL> as string"`
+
+Deployment
+---
+- in terminal:
+`pip3 install gunicorn django-cors-headers`
+- Don't forger to freeze requirements
+- Create the Procfile with the following content:
+release: python manage.py makemigrations && python manage.py migrate
+web: gunicorn drf_api.wsgi
+- Add to installed apps:
+corsheaders
+- Add to MIDDLEWARE list:
+`'corsheaders.middleware.CorsMiddleware'`
+- Create this block of code:
+![screenshot of if 'CLIENT_ORIGIN' in os.environ:]()
+- Set debug to:
+`'DEV' in os.environ`
+- Set this as the SECRET_KEY:
+`SECRET_KEY = os.getenv('SECRET_KEY')`
+- freeze requirements
