@@ -1,11 +1,4 @@
-username: testuser1
-passowrd: testpass1
-
-username: testuser2
-password: testpass2
-
-username: testuser3
-password: testpass3
+This is a practice repository
 
 permissions.py
 ---
