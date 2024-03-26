@@ -102,3 +102,14 @@ corsheaders
 - Set this as the SECRET_KEY:
 `SECRET_KEY = os.getenv('SECRET_KEY')`
 - freeze requirements
+
+Gitpod development talk to the API
+---
+The following block should allow the front-end development to talk to the backend:
+`
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
+    CORS_ALLOWED_ORIGIN_REGEXES = [
+        rf"{extracted_url}(eu|us)\d+\w\.gitpod\.io$",
+    ]
+`
