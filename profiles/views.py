@@ -7,6 +7,9 @@ from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(generics.ListAPIView):
+    """
+    Profile list
+    """
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
         posts_count = Count(
@@ -37,6 +40,9 @@ class ProfileList(generics.ListAPIView):
 
 
 class ProfileDetail(generics.RetrieveUpdateAPIView):
+    """
+    Retrieve or update profile
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = ProfileSerializer
     queryset = Profile.objects.annotate(
