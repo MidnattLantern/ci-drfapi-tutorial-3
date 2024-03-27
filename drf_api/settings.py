@@ -69,6 +69,7 @@ ALLOWED_HOSTS = [
     'localhost',
     'ci-drfapi-tutorial-3-a9f788ee8efe.herokuapp.com',
     '127.0.0.1',
+    '8000-midnattlant-cidrfapitut-jclds509hbn.ws-eu110.gitpod.io',
 ]
 
 
